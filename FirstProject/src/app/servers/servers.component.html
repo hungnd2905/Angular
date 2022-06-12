@@ -21,8 +21,10 @@
 <p>{{ serverCreationStatus }}</p>
 
 <!--Directives are Instructions in DOM-->
-<!--ngIf: Structured Directive-->
+<!--ngIf: Structured Directive (start with *, use to change DOM itself)-->
 <p *ngIf="serverCreated; else noServer">Server name is {{ serverName }}</p>
 <ng-template #noServer>
   <p>There is no server name</p>
 </ng-template>
+
+<app-server *ngFor="let server of serverList"></app-server>
