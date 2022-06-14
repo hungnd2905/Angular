@@ -14,20 +14,22 @@ export class CockpitComponent implements OnInit {
     serverName: string;
     serverContent: string;
   }>();
-  newServerName = '';
+  //newServerName = '';
   newServerContent = '';
   constructor() {}
   ngOnInit(): void {}
 
-  onAddServer() {
+  //get nameInput via local reference in template
+  onAddServer(nameInput: HTMLInputElement) {
     this.serverCreated.emit({
-      serverName: this.newServerName,
+      serverName: nameInput.value,
       serverContent: this.newServerContent,
     });
   }
-  onAddBlueprint() {
+  //get nameInput via local reference in template
+  onAddBlueprint(nameInput: HTMLInputElement) {
     this.blueprintCreated.emit({
-      serverName: this.newServerName,
+      serverName: nameInput.value,
       serverContent: this.newServerContent,
     });
   }
