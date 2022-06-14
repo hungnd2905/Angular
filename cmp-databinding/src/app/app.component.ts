@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { ServerElementComponent } from './server-element/server-element.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+
+  //ViewEncapsulation default: Emulated: each css is applied only for each component
+  //ViewEncapsulation.None: css applied globally to all components
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
   serverElements = [
