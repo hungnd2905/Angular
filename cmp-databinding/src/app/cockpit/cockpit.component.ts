@@ -1,4 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -15,7 +22,10 @@ export class CockpitComponent implements OnInit {
     serverContent: string;
   }>();
   //newServerName = '';
-  newServerContent = '';
+  //newServerContent = '';
+  //local reference fetch through @ViewChild
+  @ViewChild('serverContentInput')
+  serverContentInput!: ElementRef;
   constructor() {}
   ngOnInit(): void {}
 
@@ -23,14 +33,14 @@ export class CockpitComponent implements OnInit {
   onAddServer(nameInput: HTMLInputElement) {
     this.serverCreated.emit({
       serverName: nameInput.value,
-      serverContent: this.newServerContent,
+      serverContent: this.serverContentInput.nativeElement.value,
     });
   }
   //get nameInput via local reference in template
   onAddBlueprint(nameInput: HTMLInputElement) {
     this.blueprintCreated.emit({
       serverName: nameInput.value,
-      serverContent: this.newServerContent,
+      serverContent: this.serverContentInput.nativeElement.value,
     });
   }
 }
